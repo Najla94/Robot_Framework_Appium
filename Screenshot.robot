@@ -1,5 +1,5 @@
 *** Settings ***
-Library    AppiumLibrary
+Library     AppiumLibrary
 
 *** Variables ***
 ${APPIUM_SERVER}          http://localhost:4723
@@ -12,14 +12,8 @@ ${APP_ACTIVITY}           com.wdiodemoapp.MainActivity
 *** Test Cases ***
 Open Application
     Open Appium Application
-    Click WebView
-    Sleep    3
-    Element Should Be Visible    android= new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text("Open Source and Open Governed"))
-    Sleep    2
-  # scroll up
-  #  Element Should Be Visible    android= new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text("Get Started"))
-    Click Element    xpath=//android.widget.TextView[@text='Open Source and Open Governed']
-    sleep   1
+     Capture Page Screenshot   app_screenshot.png
+
 
 *** Keywords ***
 Open Appium Application
@@ -31,6 +25,3 @@ Open Appium Application
     ...    deviceName=${device}
     ...    appPackage=${package}
     ...    appActivity=${activity}
-
-Click WebView
-    Click Element    xpath=//android.widget.TextView[@text="󰖟"]

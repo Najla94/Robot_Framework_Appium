@@ -12,14 +12,11 @@ ${APP_ACTIVITY}           com.wdiodemoapp.MainActivity
 *** Test Cases ***
 Open Application
     Open Appium Application
-    Click WebView
-    Sleep    3
-    Element Should Be Visible    android= new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text("Open Source and Open Governed"))
-    Sleep    2
-  # scroll up
-  #  Element Should Be Visible    android= new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text("Get Started"))
-    Click Element    xpath=//android.widget.TextView[@text='Open Source and Open Governed']
+    Input UserName and Oassword  najla@gmail.com   nn1221NN
+    Submit Search
+
     sleep   1
+    Close Application
 
 *** Keywords ***
 Open Appium Application
@@ -31,6 +28,14 @@ Open Appium Application
     ...    deviceName=${device}
     ...    appPackage=${package}
     ...    appActivity=${activity}
+Input UserName and Oassword
+    [Arguments]  ${user}  ${pass}
+    Click Element    xpath=//android.widget.TextView[@text="󰍂"]
+    Sleep    1
+    Input Text     xpath=//android.widget.EditText[@content-desc="input-email"]  ${user}
+    Input Text     xpath= //android.widget.EditText[@content-desc="input-password"]   ${pass}
+    Sleep    1
+Submit Search
+   Click Element    xpath=//android.view.ViewGroup[@content-desc="button-LOGIN"]/android.view.ViewGroup
 
-Click WebView
-    Click Element    xpath=//android.widget.TextView[@text="󰖟"]
+
